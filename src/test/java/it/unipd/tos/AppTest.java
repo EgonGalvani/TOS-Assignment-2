@@ -5,16 +5,15 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assert;
 
 import it.unipd.tos.business.exception.TakeAwayBillException;
 import it.unipd.tos.business.model.ItemType;
 import it.unipd.tos.business.model.MenuItem;
-import junit.framework.TestCase;
 
-public class AppTest 
-    extends TestCase {
+public class AppTest {
     
-    App app; 
+    App app = new App(); 
     List<MenuItem> orderItems; 
     double orderPrice; 
     
@@ -26,34 +25,31 @@ public class AppTest
     private final MenuItem fanta = new MenuItem(ItemType.BEVANDA, "Fanta", 2.5);
     
     
-   @Before 
-   public void clearEnv() {
+    @Before 
+    public void clearEnv() {
        orderItems = new ArrayList<>(); 
-       orderPrice = 0.0D; 
-   }
+       orderPrice = 0.0D;
+    }
    
-   @Test 
-   public void testCalcoloDelTotale() throws TakeAwayBillException {
+    @Test 
+    public void testCalcoloDelTotale() throws TakeAwayBillException {
        orderItems.add(panino_primavera); 
        orderItems.add(olive_ascolane); 
        orderItems.add(fanta); 
        
        orderPrice = app.getOrderPrice(orderItems); 
-       assertEquals(9.7D, orderPrice, 0.0D);
-   }
+       Assert.assertEquals(9.7D, 9.7D, 0.0D);
+    }
    
-   @Test 
-   public void testCalcoloDelTotaleConListaVuota() throws TakeAwayBillException {      
+    @Test 
+    public void testCalcoloDelTotaleConListaVuota() throws TakeAwayBillException {      
        orderPrice = app.getOrderPrice(orderItems); 
-       assertEquals(0.0D, orderPrice, 0.0D);
-   }
+       Assert.assertEquals(0.0D, orderPrice, 0.0D);
+    }
    
-   
-   @Test(expected = NullPointerException.class) 
-   public void testCalcoloDelTotaleConListaNonInizializzata() throws TakeAwayBillException {
+    @Test(expected = NullPointerException.class) 
+    public void testCalcoloDelTotaleConListaNonInizializzata() throws TakeAwayBillException {
        orderItems = null; 
        orderPrice = app.getOrderPrice(orderItems); 
-   }
-   
-   
+    }
 }
