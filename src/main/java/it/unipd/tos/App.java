@@ -14,7 +14,12 @@ public class App implements TakeAwayBill {
    
     @Override
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
-        // TODO Auto-generated method stub
-        return 0;
+        
+        double orderPrice = 0.0D; 
+        for(MenuItem item : itemsOrdered)
+            orderPrice += item.getPrice(); 
+        
+        return orderPrice; 
     }
+    
 }
