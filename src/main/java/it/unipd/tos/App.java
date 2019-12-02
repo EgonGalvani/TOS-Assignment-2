@@ -16,8 +16,9 @@ public class App implements TakeAwayBill {
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
         
         double orderPrice = 0.0D; 
-        for(MenuItem item : itemsOrdered)
+        for(MenuItem item : itemsOrdered) {
             orderPrice += item.getPrice(); 
+        }
         
         return orderPrice; 
     }
