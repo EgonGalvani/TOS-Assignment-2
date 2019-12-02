@@ -17,9 +17,6 @@ public class App implements TakeAwayBill {
         // TODO Auto-generated method stub
         return 0;
     }
-    
-    public static void main( String[] args ) {
-           
-    }
+
   
 }
