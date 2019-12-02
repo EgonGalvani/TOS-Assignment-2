@@ -17,6 +17,4 @@ public class App implements TakeAwayBill {
         // TODO Auto-generated method stub
         return 0;
     }
-
-  
 }

@@ -8,7 +8,7 @@ public class MenuItem {
     String name; 
     double price; 
     
-    MenuItem(ItemType itemType, String name, double price) {
+    public MenuItem(ItemType itemType, String name, double price) {
         this.itemType = itemType; 
         this.name = name; 
         this.price = price; 
