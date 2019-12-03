@@ -64,8 +64,7 @@ public class AppTest {
         orderItems.add(olive_ascolane); 
         orderItems.add(fanta); 
                 
-        orderPrice = app.getOrderPrice(orderItems); 
-        System.out.println(orderPrice); 
+        orderPrice = app.getOrderPrice(orderItems);  
         Assert.assertEquals(29.1D, orderPrice, 0.001D);
     }
     
@@ -80,6 +79,74 @@ public class AppTest {
                 
         orderPrice = app.getOrderPrice(orderItems); 
         Assert.assertEquals(21.4D, orderPrice, 0.0D);
+    }
+    
+    @Test 
+    public void testPerOrdiniConPrezzoTotaleDiPaniniEFrittiMaggioreDiCinquanta() throws TakeAwayBillException {
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+     
+        orderPrice = app.getOrderPrice(orderItems);
+        Assert.assertEquals(73.17D, orderPrice, 0.001D);
+    }
+    
+    @Test
+    public void testPerOrdiniInCuiBisognaApplicareEntrambiGliSconti() throws TakeAwayBillException {
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(arancino);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        orderItems.add(fanta);
+        
+        orderPrice = app.getOrderPrice(orderItems); 
+        Assert.assertEquals(79.515D, orderPrice, 0.001D);
     }
     
 }
