@@ -65,7 +65,8 @@ public class AppTest {
         orderItems.add(fanta); 
                 
         orderPrice = app.getOrderPrice(orderItems); 
-        Assert.assertEquals(29.1D, orderPrice, 0.0D);
+        System.out.println(orderPrice); 
+        Assert.assertEquals(29.1D, orderPrice, 0.001D);
     }
     
     @Test 
