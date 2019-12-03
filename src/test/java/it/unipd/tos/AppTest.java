@@ -52,4 +52,33 @@ public class AppTest {
        orderItems = null; 
        orderPrice = app.getOrderPrice(orderItems); 
     }
+    
+    @Test 
+    public void testSulPaninoMenoCaroSeNeVengonoCompratiPiuDiCinque() throws TakeAwayBillException {
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_vegetariano); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_vegetariano); 
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_vegetariano); 
+        orderItems.add(olive_ascolane); 
+        orderItems.add(fanta); 
+                
+        orderPrice = app.getOrderPrice(orderItems); 
+        Assert.assertEquals(29.1D, orderPrice, 0.0D);
+    }
+    
+    @Test 
+    public void testSuOrdineConPiuDiCinqueElementiMaMenoDiCinquePanini() throws TakeAwayBillException {
+        orderItems.add(panino_primavera); 
+        orderItems.add(panino_vegetariano); 
+        orderItems.add(panino_primavera); ; 
+        orderItems.add(olive_ascolane); 
+        orderItems.add(fanta);
+        orderItems.add(arancino); 
+                
+        orderPrice = app.getOrderPrice(orderItems); 
+        Assert.assertEquals(21.4D, orderPrice, 0.0D);
+    }
+    
 }
