@@ -32,6 +32,15 @@ public class App implements TakeAwayBill {
             orderPrice -= 0.5 * panini.stream().mapToDouble(MenuItem::getPrice).min().getAsDouble();
         }
         
+        // sconto per ordini con prezzo di panini e fritti maggiore di 50 euro 
+        double prezzo_panini_fritti = itemsOrdered.stream()
+                                      .filter(e -> e.getItemType() != ItemType.BEVANDA)
+                                      .mapToDouble(MenuItem::getPrice)
+                                      .sum(); 
+        if(prezzo_panini_fritti > 50) {
+            orderPrice *= 0.9; 
+        }
+                        
         return orderPrice; 
     }
     
