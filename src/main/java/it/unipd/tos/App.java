@@ -46,6 +46,10 @@ public class App implements TakeAwayBill {
             orderPrice *= 0.9; 
         }
         
+        // commissione per ordini con prezzo totale < 10 
+        if(orderPrice < 10 && orderPrice > 0)
+            orderPrice += 0.5; 
+        
                                 
         return orderPrice; 
     }
