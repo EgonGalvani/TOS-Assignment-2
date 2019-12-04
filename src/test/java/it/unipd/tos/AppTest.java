@@ -83,70 +83,47 @@ public class AppTest {
     
     @Test 
     public void testPerOrdiniConPrezzoTotaleDiPaniniEFrittiMaggioreDiCinquanta() throws TakeAwayBillException {
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-     
+        
+        for(int i = 0; i < 4; i++) {
+            orderItems.add(panino_primavera); 
+        }
+        
+        for(int i = 0; i < 15; i++) {
+            orderItems.add(arancino);
+        }
+        
+        for(int i = 0; i < 7; i++) {
+            orderItems.add(fanta);
+        }
+        
         orderPrice = app.getOrderPrice(orderItems);
         Assert.assertEquals(73.17D, orderPrice, 0.001D);
     }
     
     @Test
     public void testPerOrdiniInCuiBisognaApplicareEntrambiGliSconti() throws TakeAwayBillException {
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(panino_primavera); 
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(arancino);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
-        orderItems.add(fanta);
+        for(int i = 0; i < 6; i++) {
+            orderItems.add(panino_primavera); 
+        }
+        
+        for(int i = 0; i < 15; i++) {
+            orderItems.add(arancino);
+        }
+        
+        for(int i = 0; i < 7; i++) {
+            orderItems.add(fanta); 
+        }
         
         orderPrice = app.getOrderPrice(orderItems); 
         Assert.assertEquals(79.515D, orderPrice, 0.001D);
     }
     
+    @Test (expected = TakeAwayBillException.class) 
+    public void testPerOrdiniConPiuDi30Elementi() throws TakeAwayBillException {
+        for(int i = 0; i < 35; i++) {
+            orderItems.add(panino_primavera); 
+        }
+        
+        orderPrice = app.getOrderPrice(orderItems); 
+    }
 }
