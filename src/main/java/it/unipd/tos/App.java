@@ -18,6 +18,10 @@ public class App implements TakeAwayBill {
     @Override
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
         
+        // controllo sul numero massimo di elementi in un ordine (30) 
+        if(itemsOrdered.size() > 30)
+           throw new TakeAwayBillException("Ci possono essere al massimo 30 panini");
+        
         // calcolo del totale
         double orderPrice = 0.0D; 
         for(MenuItem item : itemsOrdered) {
@@ -40,7 +44,8 @@ public class App implements TakeAwayBill {
         if(prezzo_panini_fritti > 50) {
             orderPrice *= 0.9; 
         }
-                        
+        
+                                
         return orderPrice; 
     }
     
