@@ -126,4 +126,11 @@ public class AppTest {
         
         orderPrice = app.getOrderPrice(orderItems); 
     }
+    
+    @Test 
+    public void testPerOrdiniInferioriADieciEuro() throws TakeAwayBillException {
+        orderItems.add(acqua_naturale);
+        orderPrice = app.getOrderPrice(orderItems); 
+        Assert.assertEquals(1.5D, orderPrice, 0.0D);
+    }
 }
