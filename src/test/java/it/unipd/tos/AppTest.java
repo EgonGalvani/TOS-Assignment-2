@@ -47,10 +47,19 @@ public class AppTest {
        Assert.assertEquals(0.0D, orderPrice, 0.0D);
     }
    
-    @Test(expected = NullPointerException.class) 
+    @Test(expected = TakeAwayBillException.class) 
     public void testCalcoloDelTotaleConListaNonInizializzata() throws TakeAwayBillException {
        orderItems = null; 
        orderPrice = app.getOrderPrice(orderItems); 
+    }
+    
+    @Test(expected = TakeAwayBillException.class)
+    public void testConListaContenenteValoriNulli() throws TakeAwayBillException {
+        orderItems.add(acqua_naturale); 
+        orderItems.add(null); 
+        orderItems.add(panino_primavera); 
+        
+        orderPrice = app.getOrderPrice(orderItems); 
     }
     
     @Test 
